@@ -20,6 +20,7 @@ h4 {
   
 p {
     font-weight: bold;
+    font-size: 13px;
 }
 
 .title-post-details, .title-post-comments, .title-all-users, .title-user-details {
@@ -159,7 +160,7 @@ p {
 
 
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 500px) {
     .users-list {
         flex-direction: wrap;
     }
@@ -167,5 +168,9 @@ p {
     .user {
         width: 100%;
         margin: 5px 0;
+    }
+
+    p {
+        font-size: 15px;
     }
 }
