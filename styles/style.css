@@ -34,7 +34,7 @@ p {
 }
 
 .user {
-    width: 49%;
+    width: 48%;
     border: 1px solid black;
     box-sizing: border-box;
     background: white;
@@ -53,6 +53,7 @@ p {
     flex-wrap: wrap;
     border: 2px solid bisque;
     border-radius: 17px;
+    justify-content: space-around;
 }
 
 .post {
@@ -148,6 +149,7 @@ p {
     -webkit-user-select: none;
     touch-action: manipulation;
     justify-content: center;
+    margin: 3px;
 }
 
 .button-info::shadow {
@@ -159,7 +161,7 @@ p {
 
 @media only screen and (max-width: 375px) {
     .users-list {
-        flex-direction: column;
+        flex-direction: wrap;
     }
 
     .user {
