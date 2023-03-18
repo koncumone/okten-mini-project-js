@@ -118,16 +118,29 @@ function fetchPosts(userId) {
   
 function displayPosts(posts) {
     const postSection = document.getElementById('post-section');
-
+    const postShow    = document.querySelector('.post-section');
+    postShow.classList.add('show-post-section');
+  
+    const postDiv = document.createElement('div');
+    postDiv.classList.add('all-posts');
+    
+    const list = document.createElement('ul');
+    list.classList.add('post-list');
+    
     posts.forEach(post => {
-        const listItem = document.createElement('li');
-
-        const linkItem = document.createElement('a');
-        linkItem.href = `post-details.html?postId=${post.id}&id=${post.userId}`;
-        linkItem.textContent = post.title;
-        
-        listItem.appendChild(linkItem);
-        postSection.appendChild(listItem);
-        
+      const listItem = document.createElement('li');
+      listItem.classList.add('post-item');
+      
+      const linkItem = document.createElement('a');
+      linkItem.classList.add('post-link');
+      linkItem.href = `post-details.html?postId=${post.id}&id=${post.userId}`;
+      linkItem.textContent = post.title;
+      
+      listItem.appendChild(linkItem);
+      list.appendChild(listItem);
     });
-}
+  
+    postDiv.appendChild(list);
+    postSection.appendChild(postDiv);
+  }
+  
