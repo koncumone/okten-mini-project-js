@@ -126,7 +126,10 @@ function displayPosts(posts) {
   
     const postDiv = document.createElement('div');
     postDiv.classList.add('all-posts');
+    postDiv.id = 'all-posts'
     
+
+
     const list = document.createElement('ul');
     list.classList.add('post-list');
     
@@ -149,10 +152,63 @@ function displayPosts(posts) {
     if (postSection.style.display == 'block') {
         postSection.style.display = 'none';
         bitton.innerText = 'show post of current user'
+
+        
     } else { 
         postSection.style.display = 'block'; 
         bitton.innerText = 'hide post of current user'
+        window.scrollTo(0, document.body.scrollHeight);
     }
 
 }
+
+
+function displayPosts(posts) {
+
+    const button = document.getElementById('show-hide');
+    const postSection = document.getElementById('post-section');
+    const postShow = document.querySelector('.post-section');
+    postShow.classList.add('show-post-section');
+
+    let postDiv = document.getElementById('all-posts');
+    let list = document.createElement('ul');
+
+    if (postDiv) {
+        postDiv.remove();
+        list.remove;
+    } else {
+        postDiv = document.createElement('div');
+        postDiv.classList.add('all-posts');
+        postDiv.id = 'all-posts';
+
+        list.classList.add('post-list');
+
+        posts.forEach((post, index) => {
+            const listItem = document.createElement('li');
+            listItem.classList.add('post-item');
+    
+            const linkItem = document.createElement('a');
+            linkItem.classList.add('post-link');
+            linkItem.href = `post-details.html?postId=${post.id}&id=${post.userId}`;
+            linkItem.textContent = `${index + 1} - ${post.title}`;
+    
+            listItem.appendChild(linkItem);
+            list.appendChild(listItem);
+
+            postDiv.appendChild(list);
+            postSection.appendChild(postDiv);
+        });
+    }
+
+    if (postSection.style.display == 'block') {
+        postSection.style.display = 'none';
+        button.innerText = 'show post of current user';
+    } else {
+        postSection.style.display = 'block';
+        button.innerText = 'hide post of current user';
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+}
+
   
