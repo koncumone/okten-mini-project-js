@@ -52,11 +52,11 @@ function displayPostComments(post) {
         const commentDiv = document.createElement('div')
         commentDiv.classList.add('commentDiv')
 
-        const idComment = createElementWithContent('h4', `Comment ID: ${id}`)
-        const bodyComment = createElementWithContent('h4', `Body: ${body}`)
-        const emailComment = createElementWithContent('h4', `Email ID: ${email}`)
-        const nameComment = createElementWithContent('h4', `Name ID: ${name}`)
-        const postIdComment = createElementWithContent('h4', `Post ID: ${postId}`)
+        const idComment = createElementWithContent('p', `Comment ID: ${id}`)
+        const bodyComment = createElementWithContent('p', `Body: ${body}`)
+        const emailComment = createElementWithContent('p', `Email ID: ${email}`)
+        const nameComment = createElementWithContent('p', `Name ID: ${name}`)
+        const postIdComment = createElementWithContent('p', `Post ID: ${postId}`)
         
 
         commentDiv.append(idComment, bodyComment, emailComment, nameComment, postIdComment)

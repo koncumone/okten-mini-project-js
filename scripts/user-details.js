@@ -25,9 +25,10 @@ function displayUserInfo(user) {
     const websiteItem   = createElementWithContent('li', `Website: ${website}`);
     const companyItem   = createElementWithContent('li', `Company:`);
 
-    const buttonPosts   = createElementWithContent('button', 'post of current user');
+    const buttonPosts   = createElementWithContent('button', 'show post of current user');
     const buttonBack    = createElementWithContent('button', 'back');
     buttonPosts.classList.add('button-info')
+    buttonPosts.id = 'show-hide'
     buttonBack.classList.add('button-info')
 
     const addressInfo   = createAddressList(address);
@@ -117,6 +118,8 @@ function fetchPosts(userId) {
 }
   
 function displayPosts(posts) {
+
+    const bitton      = document.getElementById('show-hide')
     const postSection = document.getElementById('post-section');
     const postShow    = document.querySelector('.post-section');
     postShow.classList.add('show-post-section');
@@ -127,20 +130,29 @@ function displayPosts(posts) {
     const list = document.createElement('ul');
     list.classList.add('post-list');
     
-    posts.forEach(post => {
-      const listItem = document.createElement('li');
-      listItem.classList.add('post-item');
-      
-      const linkItem = document.createElement('a');
-      linkItem.classList.add('post-link');
-      linkItem.href = `post-details.html?postId=${post.id}&id=${post.userId}`;
-      linkItem.textContent = post.title;
-      
-      listItem.appendChild(linkItem);
-      list.appendChild(listItem);
+    posts.forEach((post,index) => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('post-item');
+        
+        const linkItem = document.createElement('a');
+        linkItem.classList.add('post-link');
+        linkItem.href = `post-details.html?postId=${post.id}&id=${post.userId}`;
+        linkItem.textContent = `${index + 1} - ${post.title}`;
+        
+        listItem.appendChild(linkItem);
+        list.appendChild(listItem);
     });
   
     postDiv.appendChild(list);
     postSection.appendChild(postDiv);
-  }
+
+    if (postSection.style.display == 'block') {
+        postSection.style.display = 'none';
+        bitton.innerText = 'show post of current user'
+    } else { 
+        postSection.style.display = 'block'; 
+        bitton.innerText = 'hide post of current user'
+    }
+
+}
   
