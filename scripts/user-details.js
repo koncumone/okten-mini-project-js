@@ -206,7 +206,7 @@ function displayPosts(posts) {
     } else {
         postSection.style.display = 'block';
         button.innerText = 'hide post of current user';
-        window.scrollTo(0, document.body.scrollHeight);
+        postDiv.scrollIntoView({ block: 'center', behavior: 'smooth' });
     }
 
 }
